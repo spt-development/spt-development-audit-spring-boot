@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.spt-development</groupId>
+        <artifactId>spt-development-audit-spring-boot</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>spt-development-audit-spring-boot-starter</artifactId>
+
+    <name>audit-spring-boot-starter</name>
+
+    <dependencies>
+        <!-- Spring dependencies - version defined in parent dependencyManagement section -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- SPT dependencies - version defined in parent dependencyManagement section (where omitted) -->
+        <dependency>
+            <groupId>com.spt-development</groupId>
+            <artifactId>spt-development-cid</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.spt-development</groupId>
+            <artifactId>spt-development-audit-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.spt-development</groupId>
+            <artifactId>spt-development-audit-spring-boot-autoconfigure</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!-- Version and configuration etc defined in parent pluginManagement section -->
+            </plugin>
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <!-- Version and configuration etc defined in parent pluginManagement section -->
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <configuration>
+                    <outputFile>${project.build.directory}/dependency-versions.txt</outputFile>
+                    <rulesUri>file:///${project.basedir}/maven-version-rules.xml</rulesUri>
+                </configuration>
+                <!-- Version defined in parent pluginManagement section -->
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+
+            <activation>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <!-- Version and configuration etc defined in parent pluginManagement section -->
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <!-- Version and configuration etc defined in parent pluginManagement section -->
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <!-- Version and configuration etc defined in parent pluginManagement section -->
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <!-- Version and configuration etc defined in parent pluginManagement section -->
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
