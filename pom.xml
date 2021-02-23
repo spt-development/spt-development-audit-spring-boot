@@ -4,7 +4,7 @@
 
     <groupId>com.spt-development</groupId>
     <artifactId>spt-development-audit-spring-boot</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>audit-spring-boot</name>
     <description>Library for integrating spt-development/spt-development-audit-spring into a Spring Boot application.</description>
@@ -42,7 +42,7 @@
         <spring.version>5.3.2</spring.version>
         <spring-boot.version>2.4.1</spring-boot.version>
         <spring-security.version>5.4.2</spring-security.version>
-        <spt-audit-spring.version>1.0.0</spt-audit-spring.version>
+        <spt-audit-spring.version>1.0.1</spt-audit-spring.version>
         <spt-cid.version>1.1.0</spt-cid.version>
 
         <!-- Test dependency versions -->
