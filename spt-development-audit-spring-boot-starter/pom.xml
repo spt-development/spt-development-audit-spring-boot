@@ -15,7 +15,7 @@
     <name>audit-spring-boot-starter</name>
 
     <dependencies>
-        <!-- Spring dependencies - version defined in parent dependencyManagement section -->
+        <!-- Spring dependencies - version defined in spring-boot bom, import in parent dependencyManagement section -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
