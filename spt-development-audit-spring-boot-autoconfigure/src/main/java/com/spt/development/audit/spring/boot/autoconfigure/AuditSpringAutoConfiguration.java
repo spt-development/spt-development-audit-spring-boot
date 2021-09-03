@@ -37,7 +37,7 @@ public class AuditSpringAutoConfiguration {
      * @param auditSpringProperties an object encapsulating the spt.audit properties.
      */
     public AuditSpringAutoConfiguration(
-            @Value("${spring.application.name}")
+            @Value("${spring.application.name:Spring Boot}")
             final String appName,
             final BuildProperties buildProperties,
             final AuditSpringProperties auditSpringProperties) {
