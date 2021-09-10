@@ -96,8 +96,8 @@ public class AuditSpringAutoConfiguration {
     /**
      * Creates a {@link DefaultAuthenticationAdapterFactory} bean. In most cases, the default factory created by this
      * factory method will not be suitable and will need to be manually registered so that either
-     * {@link AuthenticationAdapterFactory#withUsernamePasswordFactory(Function)} can be called to customise how the
-     * current user's userId etc is obtained from the user principal or a custom implementation of
+     * {@link DefaultAuthenticationAdapterFactory#withUsernamePasswordFactory(Function)} can be called to customise how
+     * the current user's userId etc is obtained from the user principal or a custom implementation of
      * {@link AuthenticationAdapterFactory} used instead.
      *
      * @return a new {@link AuthenticationAdapterFactory}.
