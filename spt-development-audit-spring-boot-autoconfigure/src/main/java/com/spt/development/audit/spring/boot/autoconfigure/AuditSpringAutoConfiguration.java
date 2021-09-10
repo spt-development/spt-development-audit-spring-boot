@@ -5,6 +5,7 @@ import com.spt.development.audit.spring.JmsAuditEventWriter;
 import com.spt.development.audit.spring.Slf4jAuditEventWriter;
 import com.spt.development.audit.spring.aop.Auditor;
 import com.spt.development.audit.spring.security.AuthenticationAdapterFactory;
+import com.spt.development.audit.spring.security.DefaultAuthenticationAdapterFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -93,17 +94,17 @@ public class AuditSpringAutoConfiguration {
     }
 
     /**
-     * Creates a {@link AuthenticationAdapterFactory} bean. In most cases, the default factory created by this factory
-     * method will not be suitable and will need to be manually registered so that
-     * {@link AuthenticationAdapterFactory#withOauth2Factory(Function)} and/or
+     * Creates a {@link DefaultAuthenticationAdapterFactory} bean. In most cases, the default factory created by this
+     * factory method will not be suitable and will need to be manually registered so that either
      * {@link AuthenticationAdapterFactory#withUsernamePasswordFactory(Function)} can be called to customise how the
-     * current user's userId etc is obtained from the user principal.
+     * current user's userId etc is obtained from the user principal or a custom implementation of
+     * {@link AuthenticationAdapterFactory} used instead.
      *
      * @return a new {@link AuthenticationAdapterFactory}.
      */
     @Bean
     @ConditionalOnMissingBean
     public AuthenticationAdapterFactory authenticationAdapterFactory() {
-        return new AuthenticationAdapterFactory();
+        return new DefaultAuthenticationAdapterFactory();
     }
 }
