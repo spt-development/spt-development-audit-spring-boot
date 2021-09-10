@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.spt-development</groupId>
         <artifactId>spt-development-audit-spring-boot</artifactId>
-        <version>1.0.1</version>
+        <version>2.0.0</version>
     </parent>
 
     <artifactId>spt-development-audit-spring-boot-starter</artifactId>
@@ -15,7 +15,7 @@
     <name>audit-spring-boot-starter</name>
 
     <dependencies>
-        <!-- Spring dependencies - version defined in parent dependencyManagement section -->
+        <!-- Spring dependencies - version defined in spring-boot bom, import in parent dependencyManagement section -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
