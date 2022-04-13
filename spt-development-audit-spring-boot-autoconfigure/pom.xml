@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.spt-development</groupId>
         <artifactId>spt-development-audit-spring-boot</artifactId>
-        <version>2.0.2</version>
+        <version>2.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>spt-development-audit-spring-boot-autoconfigure</artifactId>
@@ -133,6 +133,10 @@
                     <rulesUri>file:///${project.basedir}/maven-version-rules.xml</rulesUri>
                 </configuration>
                 <!-- Version defined in parent pluginManagement section -->
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <!-- Version and configuration etc defined in parent pluginManagement section -->
             </plugin>
         </plugins>
         <resources>
