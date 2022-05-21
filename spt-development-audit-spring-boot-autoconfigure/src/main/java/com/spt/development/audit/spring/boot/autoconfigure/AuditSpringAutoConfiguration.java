@@ -7,22 +7,22 @@ import com.spt.development.audit.spring.aop.Auditor;
 import com.spt.development.audit.spring.security.AuthenticationAdapterFactory;
 import com.spt.development.audit.spring.security.DefaultAuthenticationAdapterFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.core.JmsTemplate;
 
 import java.util.function.Function;
 
 /**
- * {@link org.springframework.boot.autoconfigure.EnableAutoConfiguration Auto-Configuration} for
+ * {@link AutoConfiguration Auto-Configuration} for
  * <a href="https://github.com/spt-development/spt-development-audit-spring">spt-development/spt-development-audit-spring</a>.
  */
-@Configuration
+@AutoConfiguration
 @EnableConfigurationProperties(AuditSpringProperties.class)
 public class AuditSpringAutoConfiguration {
     private final String appName;
