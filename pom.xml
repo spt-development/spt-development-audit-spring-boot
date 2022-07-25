@@ -37,8 +37,8 @@
         <maven.compiler.release>8</maven.compiler.release>
 
         <!-- Dependency versions -->
-        <spring-boot.version>2.7.0</spring-boot.version>
-        <spt-audit-spring.version>2.0.5</spt-audit-spring.version>
+        <spring-boot.version>2.7.2</spring-boot.version>
+        <spt-audit-spring.version>2.0.6</spt-audit-spring.version>
         <spt-cid.version>2.0.11</spt-cid.version>
 
         <!-- Plugin versions -->
@@ -288,12 +288,24 @@
                     <version>${maven-release-plugin.version}</version>
                     <configuration>
                         <goals>deploy</goals>
-                        <scmCommentPrefix>[skip travis] [maven-release-plugin] </scmCommentPrefix>
+                        <scmCommentPrefix>[skip ci] [maven-release-plugin] </scmCommentPrefix>
                         <tagNameFormat>@{project.version}</tagNameFormat>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <configuration>
+                    <outputFile>${project.build.directory}/dependency-versions.txt</outputFile>
+                    <rulesUri>file:///${project.basedir}/maven-version-rules.xml</rulesUri>
+                </configuration>
+                <!-- Version defined in parent pluginManagement section -->
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>

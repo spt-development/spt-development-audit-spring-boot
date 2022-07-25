@@ -8,7 +8,7 @@
  audit-spring-boot---------------------------------------------------------------
 ````
 
-[![build_status](https://travis-ci.com/spt-development/spt-development-cid-audit-boot.svg?branch=main)](https://travis-ci.com/spt-development/spt-development-audit-spring-boot)
+[![build_status](https://github.com/spt-development/spt-development-audit-spring-boot/actions/workflows/build.yml/badge.svg)](https://github.com/spt-development/spt-development-audit-spring-boot/actions)
 
 Library for integrating 
 [spt-development/spt-development-audit-spring](https://github.com/spt-development/spt-development-audit-spring) 
@@ -58,9 +58,4 @@ To build the library, run the following maven command:
 Release
 =======
 
-To build a release and upload to Maven Central run the following maven command:
-
-    $ export GPG_TTY=$(tty) # Required on Mac OS X
-    $ mvn deploy -DskipTests -Prelease
-
-NOTE. This is currently a manual step as not currently integrated into the build.
+To build a release and upload to Maven Central push to `main`.
