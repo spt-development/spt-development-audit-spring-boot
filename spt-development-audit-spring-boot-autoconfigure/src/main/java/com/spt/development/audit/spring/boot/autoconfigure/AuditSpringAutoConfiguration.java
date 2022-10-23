@@ -27,12 +27,15 @@ import java.util.function.Function;
 public class AuditSpringAutoConfiguration {
     private final String appName;
     private final String appVersion;
+    private final boolean mdcDisabled;
     private final AuditSpringProperties auditSpringProperties;
 
     /**
      * Creates a new instance of the configuration bean.
      *
      * @param appName the name of the app.
+     * @param mdcDisabled a flag to determine whether the correlation ID can be expected to be in the MDC or not. If
+     *                    <code>false</code> then the correlation ID will be explicitly included in any log statements.
      * @param buildProperties {@link BuildProperties} encapsulating details about the build of the application, including
      *                        version number.
      * @param auditSpringProperties an object encapsulating the spt.audit properties.
@@ -40,11 +43,14 @@ public class AuditSpringAutoConfiguration {
     public AuditSpringAutoConfiguration(
             @Value("${spring.application.name:Spring Boot}")
             final String appName,
+            @Value("${spt.cid.mdc.disabled:false}")
+            final boolean mdcDisabled,
             final BuildProperties buildProperties,
             final AuditSpringProperties auditSpringProperties) {
 
         this.appName = appName;
         this.appVersion = buildProperties.getVersion();
+        this.mdcDisabled = mdcDisabled;
         this.auditSpringProperties = auditSpringProperties;
     }
 
@@ -61,7 +67,7 @@ public class AuditSpringAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public Auditor auditor(AuditEventWriter auditEventWriter, AuthenticationAdapterFactory authenticationAdapterFactory) {
-        return new Auditor(appName, appVersion, auditEventWriter, authenticationAdapterFactory);
+        return new Auditor(appName, appVersion, auditEventWriter, mdcDisabled, authenticationAdapterFactory);
     }
 
     /**
@@ -77,7 +83,7 @@ public class AuditSpringAutoConfiguration {
     @ConditionalOnBean({ JmsTemplate.class })
     @ConditionalOnProperty({ "spt.audit.jms.destination" })
     public AuditEventWriter jmsAuditEventWriter(JmsTemplate jmsTemplate) {
-        return new JmsAuditEventWriter(auditSpringProperties.getJms().getDestination(), jmsTemplate);
+        return new JmsAuditEventWriter(mdcDisabled, auditSpringProperties.getJms().getDestination(), jmsTemplate);
     }
 
     /**
@@ -90,7 +96,7 @@ public class AuditSpringAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean({ AuditEventWriter.class })
     public AuditEventWriter slf4jAuditEventWriter() {
-        return new Slf4jAuditEventWriter();
+        return new Slf4jAuditEventWriter(mdcDisabled);
     }
 
     /**
