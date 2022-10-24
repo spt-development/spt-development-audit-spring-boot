@@ -38,7 +38,7 @@
 
         <!-- Dependency versions -->
         <spring-boot.version>2.7.5</spring-boot.version>
-        <spt-audit-spring.version>2.0.9</spt-audit-spring.version>
+        <spt-audit-spring.version>2.0.10</spt-audit-spring.version>
         <spt-cid.version>2.0.11</spt-cid.version>
 
         <!-- Plugin versions -->
