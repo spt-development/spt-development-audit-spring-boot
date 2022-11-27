@@ -1,13 +1,11 @@
 package com.spt.development.audit.spring.boot.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.ConstructorBinding;
 
 /**
  * Configuration properties for
  * <a href="https://github.com/spt-development/spt-development-audit-spring">spt-development/spt-development-audit-spring</a>.
  */
-@ConstructorBinding
 @ConfigurationProperties(prefix = "spt.audit")
 public class AuditSpringProperties {
     private final Jms jms;
