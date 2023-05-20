@@ -3,7 +3,7 @@
 
     <groupId>com.spt-development</groupId>
     <artifactId>spt-development-audit-spring-boot</artifactId>
-    <version>3.0.7-SNAPSHOT</version>
+    <version>3.1.0-SNAPSHOT</version>
 
     <name>audit-spring-boot</name>
     <description>Library for integrating spt-development/spt-development-audit-spring into a Spring Boot application.</description>
@@ -37,15 +37,15 @@
         <maven.compiler.release>17</maven.compiler.release>
 
         <!-- Dependency versions -->
-        <spring-boot.version>3.0.6</spring-boot.version>
-        <spt-audit-spring.version>3.0.5</spt-audit-spring.version>
+        <spring-boot.version>3.1.0</spring-boot.version>
+        <spt-audit-spring.version>3.0.6</spt-audit-spring.version>
         <spt-cid.version>2.0.11</spt-cid.version>
 
         <!-- Plugin versions -->
         <checkstyle-maven-plugin.version>3.1.2</checkstyle-maven-plugin.version>
         <findbugs-slf4j-bug-pattern.version>1.5.0</findbugs-slf4j-bug-pattern.version>
         <findbugs-sec-bug-pattern.version>1.12.0</findbugs-sec-bug-pattern.version>
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
         <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
