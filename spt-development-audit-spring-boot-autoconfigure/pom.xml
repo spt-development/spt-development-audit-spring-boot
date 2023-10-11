@@ -98,25 +98,42 @@
             </plugin>
             <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <!-- Version and configuration etc defined in parent pluginManagement section -->
+                <executions>
+                    <execution>
+                        <id>parent-enforce</id>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>enforce</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <dependencyConvergence />
+                                <requireMavenVersion>
+                                    <version>${maven.min.version}</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+                <!-- Version defined in parent  pluginManagement section -->
             </plugin>
             <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <configLocation>spt_checks.xml</configLocation>
-                </configuration>
-                <!-- Version and additional configuration etc defined in parent pluginManagement section -->
-            </plugin>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <configuration>
-                    <excludeFilterFile>${project.basedir}/findbugs-exclude.xml</excludeFilterFile>
-                </configuration>
+                <!-- Version and configuration etc defined in parent pluginManagement section -->
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <!-- Version and configuration etc defined in parent pluginManagement section -->
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -124,13 +141,12 @@
                 <!-- Version and configuration etc defined in parent pluginManagement section -->
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
                 <configuration>
-                    <outputFile>${project.build.directory}/dependency-versions.txt</outputFile>
-                    <rulesUri>file:///${project.basedir}/maven-version-rules.xml</rulesUri>
+                    <skip>false</skip>
                 </configuration>
-                <!-- Version defined in parent pluginManagement section -->
+                <!-- Version and configuration etc defined in parent pluginManagement section -->
             </plugin>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
@@ -146,32 +162,23 @@
 
     <profiles>
         <profile>
-            <id>release</id>
-
-            <activation>
-                <property>
-                    <name>release</name>
-                </property>
-            </activation>
-
+            <!-- Additional quality gates not run by default when executing mvn clean verify, but are run by CI pipeline -->
+            <id>all-quality-gates</id>
             <build>
                 <plugins>
                     <plugin>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <!-- Version and configuration etc defined in parent pluginManagement section -->
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <!-- Version and configuration etc defined in pluginManagement section -->
                     </plugin>
                     <plugin>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <!-- Version and configuration etc defined in parent pluginManagement section -->
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <!-- Version and configuration etc defined in pluginManagement section -->
                     </plugin>
                     <plugin>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <!-- Version and configuration etc defined in parent pluginManagement section -->
-                    </plugin>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <!-- Version and configuration etc defined in parent pluginManagement section -->
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                        <!-- Version and configuration etc defined in pluginManagement section -->
                     </plugin>
                 </plugins>
             </build>
