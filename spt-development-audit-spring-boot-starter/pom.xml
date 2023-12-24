@@ -60,7 +60,31 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!-- Version and configuration etc defined in parent pluginManagement section -->
+                <executions>
+                    <!--
+                         Disable compilation (and test compilation) as there is no code to compile. Since maven-compiler-plugin 3.12.0,
+                         compiling when there is no code has caused the following error (and a similar one for test compilation):
+
+                         Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.12.0:compile (default-compile) on project <project>: Fatal error compiling:
+                         basedir <baseDir>/target/generated-sources/annotations does not exist
+                      -->
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                        <configuration>
+                            <!-- There are no tests to compile -->
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+                <!-- Version defined in parent pluginManagement section -->
             </plugin>
             <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
