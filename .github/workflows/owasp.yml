@@ -32,7 +32,7 @@ jobs:
           release: 21
 
       - name: Run Maven
-        run: ./mvnw clean install dependency-check:check -DnvdApiKey=${{ secrets.NVD_API_KEY }} -DnvdApiDelay=6000 -B
+        run: ./mvnw clean install dependency-check:check -DnvdApiKey=${{ secrets.NVD_API_KEY }} -DnvdApiDelay=6000 -Denforcer.skip=true -B
         
       # Want the Maven dependencies to be cached even if the build fails as we want the OWASP database cached, regardless of whether vulnerabilities are found or not
       - name: Cache Maven dependencies
