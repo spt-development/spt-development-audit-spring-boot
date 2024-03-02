@@ -40,8 +40,8 @@
         <maven.min.version>3.9.4</maven.min.version>
 
         <!-- Dependency versions -->
-        <spring-boot.version>3.2.2</spring-boot.version>
-        <spt-audit-spring.version>3.0.14</spt-audit-spring.version>
+        <spring-boot.version>3.2.3</spring-boot.version>
+        <spt-audit-spring.version>3.0.15</spt-audit-spring.version>
         <spt-cid.version>2.0.12</spt-cid.version>
 
         <!-- Plugin versions -->
@@ -49,7 +49,7 @@
         <checkstyle-maven-plugin.version>3.3.1</checkstyle-maven-plugin.version>
         <dependency-check-maven.version>9.0.9</dependency-check-maven.version>
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
-        <license-maven-plugin.version>2.3.0</license-maven-plugin.version>
+        <license-maven-plugin.version>2.4.0</license-maven-plugin.version>
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
         <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
@@ -62,12 +62,12 @@
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <nexus-staging-plugin.version>1.6.13</nexus-staging-plugin.version>
-        <pitest-maven.version>1.15.4</pitest-maven.version>
-        <spotbugs.version>4.8.3.0</spotbugs.version>
+        <pitest-maven.version>1.15.8</pitest-maven.version>
+        <spotbugs.version>4.8.3.1</spotbugs.version>
         <versions-maven-plugin.version>2.16.2</versions-maven-plugin.version>
 
         <!-- Plugin dependencies -->
-        <checkstyle.version>10.12.7</checkstyle.version>
+        <checkstyle.version>10.14.0</checkstyle.version>
         <findbugs-slf4j-bug-pattern.version>1.5.0</findbugs-slf4j-bug-pattern.version>
         <findbugs-sec-bug-pattern.version>1.12.0</findbugs-sec-bug-pattern.version>
         <pitest-junit5-plugin.version>1.2.1</pitest-junit5-plugin.version>
