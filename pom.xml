@@ -3,7 +3,7 @@
 
     <groupId>com.spt-development</groupId>
     <artifactId>spt-development-audit-spring-boot</artifactId>
-    <version>3.3.2-SNAPSHOT</version>
+    <version>3.3.2</version>
 
     <name>audit-spring-boot</name>
     <description>Library for integrating spt-development/spt-development-audit-spring into a Spring Boot application.</description>
@@ -12,7 +12,7 @@
     <scm>
         <connection>scm:git:https://github.com/spt-development/spt-development-audit-spring-boot.git</connection>
         <url>https://github.com/spt-development/spt-development-audit-spring-boot</url>
-      <tag>HEAD</tag>
+      <tag>3.3.2</tag>
   </scm>
 
     <licenses>
