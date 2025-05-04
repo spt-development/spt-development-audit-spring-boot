@@ -40,12 +40,9 @@
         <maven.min.version>3.9.4</maven.min.version>
 
         <!-- Dependency versions -->
-        <spring-boot.version>3.4.4</spring-boot.version>
-        <spt-audit-spring.version>3.0.27</spt-audit-spring.version>
+        <spring-boot.version>3.4.5</spring-boot.version>
+        <spt-audit-spring.version>3.0.28</spt-audit-spring.version>
         <spt-cid.version>2.0.15</spt-cid.version>
-
-        <!-- Overriding Lombok version, to support JDK 24 -->
-        <lombok.version>1.18.38</lombok.version>
 
         <!-- Plugin versions -->
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
@@ -65,16 +62,16 @@
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <nexus-staging-plugin.version>1.7.0</nexus-staging-plugin.version>
-        <pitest-maven.version>1.19.0</pitest-maven.version>
+        <pitest-maven.version>1.19.1</pitest-maven.version>
         <spotbugs.version>4.9.3.0</spotbugs.version>
         <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
 
         <!-- Plugin dependencies -->
-        <checkstyle.version>10.23.0</checkstyle.version>
+        <checkstyle.version>10.23.1</checkstyle.version>
         <findbugs-slf4j-bug-pattern.version>1.5.0</findbugs-slf4j-bug-pattern.version>
-        <findbugs-sec-bug-pattern.version>1.13.0</findbugs-sec-bug-pattern.version>
+        <findbugs-sec-bug-pattern.version>1.14.0</findbugs-sec-bug-pattern.version>
         <pitest-junit5-plugin.version>1.2.2</pitest-junit5-plugin.version>
-        <pmd.version>7.12.0</pmd.version>
+        <pmd.version>7.13.0</pmd.version>
         <slf4j.version>2.0.17</slf4j.version>
     </properties>
 
@@ -99,13 +96,6 @@
                 <groupId>com.spt-development</groupId>
                 <artifactId>spt-development-audit-spring</artifactId>
                 <version>${spt-audit-spring.version}</version>
-            </dependency>
-
-            <!-- Overriding Lombok version, to support JDK 24 -->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
