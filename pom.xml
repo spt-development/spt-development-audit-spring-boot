@@ -3,7 +3,7 @@
 
     <groupId>com.spt-development</groupId>
     <artifactId>spt-development-audit-spring-boot</artifactId>
-    <version>3.4.6-SNAPSHOT</version>
+    <version>3.5.0-SNAPSHOT</version>
 
     <name>audit-spring-boot</name>
     <description>Library for integrating spt-development/spt-development-audit-spring into a Spring Boot application.</description>
@@ -40,12 +40,13 @@
         <maven.min.version>3.9.4</maven.min.version>
 
         <!-- Dependency versions -->
-        <spring-boot.version>3.4.5</spring-boot.version>
-        <spt-audit-spring.version>3.0.28</spt-audit-spring.version>
+        <spring-boot.version>3.5.0</spring-boot.version>
+        <spt-audit-spring.version>3.0.29</spt-audit-spring.version>
         <spt-cid.version>2.0.15</spt-cid.version>
 
         <!-- Plugin versions -->
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
+        <central-publishing-plugin.version>0.7.0</central-publishing-plugin.version>
         <checkstyle-maven-plugin.version>3.6.0</checkstyle-maven-plugin.version>
         <dependency-check-maven.version>12.1.1</dependency-check-maven.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
@@ -61,16 +62,15 @@
         <maven-scm-plugin.version>2.1.0</maven-scm-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
-        <nexus-staging-plugin.version>1.7.0</nexus-staging-plugin.version>
-        <pitest-maven.version>1.19.1</pitest-maven.version>
+        <pitest-maven.version>1.19.4</pitest-maven.version>
         <spotbugs.version>4.9.3.0</spotbugs.version>
         <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
 
         <!-- Plugin dependencies -->
-        <checkstyle.version>10.23.1</checkstyle.version>
+        <checkstyle.version>10.24.0</checkstyle.version>
         <findbugs-slf4j-bug-pattern.version>1.5.0</findbugs-slf4j-bug-pattern.version>
         <findbugs-sec-bug-pattern.version>1.14.0</findbugs-sec-bug-pattern.version>
-        <pitest-junit5-plugin.version>1.2.2</pitest-junit5-plugin.version>
+        <pitest-junit5-plugin.version>1.2.3</pitest-junit5-plugin.version>
         <pmd.version>7.13.0</pmd.version>
         <slf4j.version>2.0.17</slf4j.version>
     </properties>
@@ -380,9 +380,9 @@
                     <version>${pitest-maven.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${nexus-staging-plugin.version}</version>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
+                    <version>${central-publishing-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -634,13 +634,13 @@
                             <!-- Version defined in pluginManagement section -->
                         </plugin>
                         <plugin>
-                            <groupId>org.sonatype.plugins</groupId>
-                            <artifactId>nexus-staging-maven-plugin</artifactId>
+                            <groupId>org.sonatype.central</groupId>
+                            <artifactId>central-publishing-maven-plugin</artifactId>
                             <extensions>true</extensions>
                             <configuration>
-                                <serverId>ossrh</serverId>
-                                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                                <publishingServerId>central</publishingServerId>
+                                <autoPublish>true</autoPublish>
+                                <waitUntil>published</waitUntil>
                             </configuration>
                             <!-- Version defined in pluginManagement section -->
                         </plugin>
@@ -662,7 +662,7 @@
                     </plugin>
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
                         <!-- Version and configuration etc defined in pluginManagement section -->
                     </plugin>
                 </plugins>
@@ -691,13 +691,5 @@
             <id>github</id>
             <url>https://github.com/spt-development/spt-development-audit-spring-boot</url>
         </site>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
     </distributionManagement>
 </project>
