@@ -661,7 +661,7 @@
                         <!-- Version and configuration etc defined in pluginManagement section -->
                     </plugin>
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
+                        <groupId>org.sonatype.central</groupId>
                         <artifactId>central-publishing-maven-plugin</artifactId>
                         <!-- Version and configuration etc defined in pluginManagement section -->
                     </plugin>
